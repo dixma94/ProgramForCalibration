@@ -1,0 +1,42 @@
+﻿<Window x:Class="ProgramForCalibration.View.OpenSessionDialog_View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgramForCalibration.View"
+        xmlns:vm="clr-namespace:ProgramForCalibration.ViewModel"
+        mc:Ignorable="d"
+        Title="Select Resource" Height="259" Width="470" >
+    <Window.Resources>
+        <!-- Определение ViewModel -->
+        <vm:OpenSessionDialog_VM x:Key="VM"/>
+        <RoutedCommand x:Key="Refresh"/>
+        <RoutedCommand x:Key="OK"/>
+        <RoutedCommand x:Key="Close"/>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource Refresh}" Executed="{x:Static vm:OpenSessionDialog_VM.Refresh}" />
+        <CommandBinding Command="{StaticResource OK}" Executed="{x:Static vm:OpenSessionDialog_VM.OK}" />
+        <CommandBinding Command="{StaticResource Close}" Executed="{x:Static vm:OpenSessionDialog_VM.Cancel}" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Margin="5,0,0,3">Available Resourses:</Label>
+        <ListBox Margin="5,0,5,0" x:Name="list_box"  Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding AvailableResoursesList}" MouseDoubleClick="list_box_MouseDoubleClick"  SelectedItem="{Binding ResourceName}" ></ListBox>
+        <Button Margin="0,0,5,0" Grid.Row="2" Grid.Column="1" Width="75" Height="25" HorizontalAlignment="Right"  Command="{StaticResource Refresh}" CommandParameter="{Binding Mode=OneWay}" >Refresh</Button>
+        <Label Margin="5,0,0,0" Grid.Row="2">Resource String:</Label>
+        <TextBox Margin="5,0,0,0" Grid.Row="3" VerticalContentAlignment="Center" Text="{Binding ResourceName}" ></TextBox>
+        <Button Margin="5,0,0,0" Grid.Row="4" Width="75" Height="25" HorizontalAlignment="left" Command="{StaticResource Close}">Cancel</Button>
+        <Button Margin="0,0,5,0" Grid.Row="4" Grid.Column="1" Width="75" Height="25" HorizontalAlignment="Right" Command="{StaticResource OK}" CommandParameter="{Binding Mode=OneWay}">OK</Button>
+    </Grid>
+</Window>

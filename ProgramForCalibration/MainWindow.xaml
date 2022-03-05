@@ -1,0 +1,50 @@
+﻿<Window x:Class="ProgramForCalibration.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProgramForCalibration"
+        xmlns:view="clr-namespace:ProgramForCalibration.View"
+        xmlns:vm="clr-namespace:ProgramForCalibration.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- Определение ViewModel -->
+        <vm:MainViewModel x:Key="Main"/>
+        <RoutedCommand x:Key="AddDevice"/>
+        <RoutedCommand x:Key="Read"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Source="{StaticResource Main}"/>
+    </Window.DataContext>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource AddDevice}" Executed="{x:Static vm:MainViewModel.AddDevice}" />
+        <CommandBinding Command="{StaticResource Read}" Executed="{x:Static vm:MainViewModel.Read}" />
+    </Window.CommandBindings>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding ViewModelSampleCollection}" Grid.Column="0">
+            <ListBox.Resources>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="ContentTemplate" >
+                        <Setter.Value>
+                            <DataTemplate>
+                                <view:SampleView/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
+        <Button Grid.Column="1"  Command="{StaticResource Read}" CommandParameter="{Binding Mode=OneWay}">sdsd</Button>
+        <Button Grid.Column="1" Grid.Row="1" Command="{StaticResource AddDevice}" CommandParameter="{Binding Mode=OneWay}">sdsd</Button>
+    </Grid>
+</Window>
