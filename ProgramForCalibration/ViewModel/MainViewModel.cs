@@ -46,7 +46,7 @@ namespace ProgramForCalibration.ViewModel
                 return (object sender, ExecutedRoutedEventArgs e) =>
                 {
                     var vm = e.Parameter as MainViewModel;
-                    
+                    vm.hP_3457.F(Model.HP3457_Model.Function_type.F10);
                     
 
 
