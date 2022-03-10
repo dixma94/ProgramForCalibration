@@ -29,10 +29,9 @@ namespace ProgramForCalibration.Model
             MbSession.RawIO.Write(command);
         }
 
-        public string Read()
+        public string Read(int bytes)
         {
-                    MbSession.RawIO.Write("READ?");
-            return  MbSession.RawIO.ReadString();
+            return  MbSession.RawIO.ReadString(bytes);
         }
 
         public void Connect(string resourceName)

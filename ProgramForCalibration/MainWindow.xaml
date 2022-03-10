@@ -31,20 +31,21 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox ItemsSource="{Binding ViewModelSampleCollection}" Grid.Column="0">
+        
+        <ListBox ItemsSource="{Binding DeviceCollection}" Grid.Column="0">
             <ListBox.Resources>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="ContentTemplate" >
                         <Setter.Value>
                             <DataTemplate>
-                                <view:SampleView/>
+                                <view:DeviceView/>
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>
                 </Style>
             </ListBox.Resources>
         </ListBox>
-        <Button Grid.Column="1"  Command="{StaticResource Read}" CommandParameter="{Binding Mode=OneWay}">sdsd</Button>
-        <Button Grid.Column="1" Grid.Row="1" Command="{StaticResource AddDevice}" CommandParameter="{Binding Mode=OneWay}">sdsd</Button>
+        
+        <Button Grid.Column="1" Grid.Row="0" Command="{StaticResource AddDevice}" CommandParameter="{Binding Mode=OneWay}">sdsd</Button>
     </Grid>
 </Window>

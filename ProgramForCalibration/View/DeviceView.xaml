@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="ProgramForCalibration.View.DeviceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ProgramForCalibration.View"
+             xmlns:vm="clr-namespace:ProgramForCalibration.ViewModel"
+             mc:Ignorable="d"
+             
+             d:DesignHeight="400" d:DesignWidth="400">
+    <UserControl.Resources>
+        <RoutedCommand x:Key="AddCommand"/>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource AddCommand}" Executed="{x:Static vm:DeviceVM.AddCommand}" />
+    </UserControl.CommandBindings>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="{Binding Name}"></TextBlock>
+        <Button Grid.Column="1" Command="{StaticResource AddCommand}" CommandParameter="{Binding Mode=OneWay}">Add</Button>
+    </Grid>
+</UserControl>

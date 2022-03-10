@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ProgramForCalibration.View
 {
     /// <summary>
-    /// Логика взаимодействия для SampleDataView.xaml
+    /// Логика взаимодействия для DeviceView.xaml
     /// </summary>
-    public partial class SampleDataView : UserControl
+    public partial class DeviceView : UserControl
     {
-        public SampleDataView()
+        public DeviceView()
         {
             InitializeComponent();
         }
