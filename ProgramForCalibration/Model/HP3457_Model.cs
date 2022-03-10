@@ -7,23 +7,25 @@ using System.Threading.Tasks;
 
 namespace ProgramForCalibration.Model
 {
+   
     public interface IDevice
     {
         GpibSession Session { get; set; }
-        string Name { get; set; }
+        DeviceType DeviceType { get; set; }
     }
    public class HP3457_Model: IDevice
     {
          
         
         public GpibSession Session { get; set; }
-        public string Name { get; set; } = "HP3457";
+        public DeviceType DeviceType { get; set; }
 
 
 
         public HP3457_Model(GpibSession gpibSession)
         {
             Session = gpibSession;
+            DeviceType = DeviceType.HP3457;
             
         }
 

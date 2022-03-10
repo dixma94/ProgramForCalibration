@@ -66,6 +66,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\DeviceTypeEnum.cs" />
     <Compile Include="Model\GpibSession.cs" />
     <Compile Include="Model\HP3457_Model.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
